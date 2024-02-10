@@ -1,22 +1,19 @@
-# Use an official Node.js runtime as a parent image for building the Node.js server
+# Use an official Node.js runtime as a parent image for running the Node.js server
 FROM node:12.22.9 AS node-builder
 
-# Set the working directory in the container for building the Node.js server
+# Set the working directory in the container for the Node.js server
 WORKDIR /usr/src/node-app
 
-# Copy the application code for the Node.js server
+# Copy the Node.js application code
 COPY . .
 
-# Build the Node.js server
-RUN npm run build
-
-# Use an official Python runtime as a parent image for building the Python Flask app
+# Use an official Python runtime as a parent image for running the Python Flask app
 FROM python:3.10.12 AS python-builder
 
-# Set the working directory in the container for building the Python Flask app
+# Set the working directory in the container for the Python Flask app
 WORKDIR /usr/src/flask-app
 
-# Copy the application code for the Python Flask app
+# Copy the Python Flask application code
 COPY . .
 
 # Use a final base image for running the applications
@@ -25,10 +22,10 @@ FROM node:12.22.9
 # Set the working directory for the final image
 WORKDIR /usr/src/app
 
-# Copy built Node.js server from node-builder stage
+# Copy the Node.js server from the node-builder stage
 COPY --from=node-builder /usr/src/node-app .
 
-# Copy Python Flask app from python-builder stage
+# Copy the Python Flask app from the python-builder stage
 COPY --from=python-builder /usr/src/flask-app .
 
 # Expose ports for both the Node.js server and the Python Flask app
