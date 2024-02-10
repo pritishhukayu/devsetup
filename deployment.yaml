@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nodepythonflask
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: nodepythonflask
+  template:
+    metadata:
+      labels:
+        app: nodepythonflask
+    spec:
+      containers:
+      - name: nodepythonflask
+        image: hukayu/my-node-flask-app:latest
+        ports:
+        - containerPort: 3000
