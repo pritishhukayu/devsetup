@@ -9,7 +9,7 @@ const PORT = process.env.PORT || 3000;
 // Create a simple HTTP server
 const server = http.createServer((req, res) => {
     res.writeHead(200, {'Content-Type': 'text/plain'});
-    res.end('Hello, world!\n');
+    res.end('Pritish Is Learning\n');
 });
 
 // Start the server and listen on the specified port
