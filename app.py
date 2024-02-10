@@ -9,7 +9,7 @@ app = Flask(__name__)
 # Define a route for the root URL
 @app.route('/')
 def hello():
-    return 'Hello, world!'
+    return 'Pritish Is Learning'
 
 # Run the application
 if __name__ == '__main__':
