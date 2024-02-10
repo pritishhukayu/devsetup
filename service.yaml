@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: nodepythonflask
+  namespace: your-namespace  # Add your desired namespace here
+spec:
+  selector:
+    app: nodepythonflask
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 3000
+  type: NodePort
